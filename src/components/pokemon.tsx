@@ -1,27 +1,20 @@
 // IMPORTS -----------------------------------
-import React, { useState } from 'react';
+import React, { JSX, useState } from 'react';
 import styled from 'styled-components';
+import { PokemonType } from '@/types';
+import PokemonList from '@/components/pokemonList';
 
 // TYPES -------------------------------------
-interface Pokemon {
-  name: string;
-}
 
 // COMPONENT ---------------------------------
-export default function Pokemon() {
-  const [pokemon, addPokemon] = useState<Pokemon[]>([{name: "pikachu"}, {name: "squirtle"}]);
+const Pokemon: React.FunctionComponent = (): JSX.Element => {
+  const [pokemon, addPokemon] = useState<PokemonType[]>([{name: "pikachu"}, {name: "squirtle"}]);
 
   return (
     <Body> 
-      <>
-        <p>Welcome to Pokemon Search! Search by any name below:</p>
-        <input></input>
-        <Grid>
-          {pokemon.map((pokemon, id) => (
-            <li key={id}>{pokemon.name}</li>
-          ))}
-        </Grid>
-      </>
+      <p>Welcome to Pokemon Search! Search by any name below:</p>
+      <input></input>
+      <PokemonList pokemon={pokemon} />
     </Body>
   )
 };
@@ -37,12 +30,4 @@ const Body = styled.div`
   }
 `;
 
-const Grid = styled.div`
-  width: 80%;
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 2vw;
-`;
+export default Pokemon;
