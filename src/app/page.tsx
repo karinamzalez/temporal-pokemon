@@ -1,6 +1,6 @@
 "use client"
 import styled from 'styled-components';
-import Pokemon from '@/components/pokemon';
+import Pokemon from '@/components/Pokemon';
 
 export default function Home() {
   return (

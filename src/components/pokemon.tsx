@@ -2,7 +2,8 @@
 import React, { JSX, useState } from 'react';
 import styled from 'styled-components';
 import { PokemonType } from '@/types';
-import PokemonList from '@/components/pokemonList';
+import PokemonList from '@/components/PokemonList';
+import SearchInput from '@/components/SearchInput';
 
 // TYPES -------------------------------------
 
@@ -11,17 +12,17 @@ const Pokemon: React.FunctionComponent = (): JSX.Element => {
   const [pokemon, addPokemon] = useState<PokemonType[]>([{name: "pikachu"}, {name: "squirtle"}]);
 
   return (
-    <Body> 
-      <p>Welcome to Pokemon Search! Search by any name below:</p>
-      <input></input>
+    <StyledContainer> 
+      <h1>Welcome to Pokemon Search! Search by keyword below:</h1>
+      <SearchInput />
       <PokemonList pokemon={pokemon} />
-    </Body>
+    </StyledContainer>
   )
 };
 
 // STYLING (alphabetized) ---------------------
 
-const Body = styled.div`
+const StyledContainer = styled.div`
   justify-content: center;
   margin: 5vh 5vw;
 
