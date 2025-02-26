@@ -1,15 +1,15 @@
-import React, { JSX, useEffect, useState, lazy, memo } from 'react';
-import axios from "axios";
+import React, { JSX, useEffect, useState, memo } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
 
 import Alert from '@mui/material/Alert';
 import SearchInput from '@/components/SearchInput';
-const PokemonList = lazy(() => import('@/components/PokemonList'));
+import PokemonList from '@/components/PokemonList';
+// const PokemonList = lazy(() => import('@/components/PokemonList'));
 
 import { useInput } from '@/hooks/useInput';
 import { PokemonType } from '@/types';
-import { fetcher, url } from '@/api';
+import { axiosFetchPokemon, fetcher } from '@/api';
 
 // COMPONENT ---------------------------------
 const Pokemon: React.FunctionComponent = (): JSX.Element => {
@@ -23,12 +23,11 @@ const Pokemon: React.FunctionComponent = (): JSX.Element => {
   useEffect(() => {
     // MAKE SECOND CALL IF NEXT PAGE TOKEN IS PRESENT
     if (searchTerm && !error && isLoading==false && data && data.nextPage) {
-      axios.get(`${url}/${searchTerm}?page=${data.nextPage}`)
-        .then(res => {
-          if (res.data.pokemon) {
-            setSecondPage(res.data.pokemon)
-          }
-        })
+      const getSecondPagePokemon = async () => {
+        const pokemon = await axiosFetchPokemon(searchTerm, data.nextPage)
+        setSecondPage(pokemon)
+      }
+      getSecondPagePokemon()
     } else {
       setSecondPage([])
     }

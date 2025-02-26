@@ -11,7 +11,6 @@ export default function Home() {
   );
 }
 
-
 // STYLING
 const Header = styled.header`
   background-color: #CC0000;
