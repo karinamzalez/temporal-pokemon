@@ -1,11 +1,11 @@
-import React, { JSX, useEffect, useState, memo } from 'react';
+import React, { JSX, useEffect, useState, lazy, memo } from 'react';
 import axios from "axios";
 import styled from 'styled-components';
 import useSWR from 'swr';
 
 import Alert from '@mui/material/Alert';
-import PokemonList from '@/components/PokemonList';
 import SearchInput from '@/components/SearchInput';
+const PokemonList = lazy(() => import('@/components/PokemonList'));
 
 import { useInput } from '@/hooks/useInput';
 import { PokemonType } from '@/types';
