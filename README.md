@@ -66,8 +66,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
        * Although I did start trying to debounce my request, I would have liked to get that working. 
        * look into why API requests never returned empty array of pokemon as documentation suggested. (Empty Results returned 404 error)
        * refactor handling of nextPage
+       * resolve eslint errors 
+       * remove styled-components. Although, MaterialUI gives you the option between styled components and emotions upon installation, it still requires emotions as a dependency for certain components (like the text input). So I would solely choose emotions to remove unnecessary libraries. (performance consideration) 
 ## Takeaways 
-   * The last time I created a project in NextJS was in 2022-- it never ceases to astound me how rapidly the landscape of tech evolves! It felt brand new and I was honestly super excited to learn about and use its new features. I have no doubt that I'll feel the same about Svelte :) 
+   * The last time I created a project in NextJS and React was in 2022-- it never ceases to astound me how rapidly the landscape of tech evolves! It felt brand new and I was honestly super excited to learn about and use its new features. I have no doubt that I'll feel the same about Svelte :) 
 Thank you so much for your consideration! 
 
    
