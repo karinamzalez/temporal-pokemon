@@ -1,18 +1,18 @@
 // IMPORTS -----------------------------------
 import React, { JSX, useEffect } from 'react';
 import TextField from "@mui/material/TextField";
-import { useInput } from '@/hooks/useInput';
+
 
 // TYPES -------------------------------------
+type SearchInputProps = {
+  bindSearchTerm: {
+    value: string;
+    onChange: (e: unknown) => void;
+  }
+}
 
 // COMPONENT ---------------------------------
-const SearchInput: React.FunctionComponent = (): JSX.Element => {
-  const { value: searchTerm, bind: bindSearchTerm } = useInput("");
-  
-  useEffect(() => {
-    console.log(searchTerm)
-  }, [searchTerm]);
-
+const SearchInput: React.FunctionComponent<SearchInputProps> = ({ bindSearchTerm }): JSX.Element => {
   return (
     <TextField
       fullWidth
