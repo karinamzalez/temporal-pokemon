@@ -1,4 +1,3 @@
-// IMPORTS -----------------------------------
 import React, { JSX } from 'react';
 import TextField from "@mui/material/TextField";
 
@@ -24,8 +23,5 @@ const SearchInput: React.FunctionComponent<SearchInputProps> = ({ bindSearchTerm
     />
   )
 };
-
-// STYLING (alphabetized) ---------------------
-
 
 export default SearchInput;

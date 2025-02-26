@@ -13,7 +13,6 @@ export default function Home() {
 
 
 // STYLING
-
 const Header = styled.header`
   background-color: #CC0000;
   min-height: 10vh;

@@ -1,14 +1,15 @@
-// IMPORTS -----------------------------------
 import React, { JSX } from 'react';
+
+import { orderBy } from 'lodash';
 import styled from 'styled-components';
+
 import Alert from '@mui/material/Alert';
-import { PokemonType } from '@/types';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import CircularProgress from "@mui/material/CircularProgress";
+import Typography from '@mui/material/Typography';
 
+import { PokemonType } from '@/types';
 
 // TYPES -------------------------------------
 interface PokemonListProps {
@@ -19,11 +20,13 @@ interface PokemonListProps {
 
 // COMPONENT ---------------------------------
 const PokemonList: React.FunctionComponent<PokemonListProps> = ({ pokemon, error, loading }): JSX.Element => {
+  const alphabetizedPokemon = orderBy(pokemon, ['name'], ['asc'])
+
   if (error) return <Alert severity="error">No matching results found.</Alert>
   if (loading) return <CircularProgress />
   return (
     <StyledBox>
-      {pokemon.map((pokemon, id) => (
+      {alphabetizedPokemon.map((pokemon: PokemonType, id: number) => (
         <Card key={id}>
           <CardContent>
               <Typography variant="h5" component="div">
@@ -39,8 +42,7 @@ const PokemonList: React.FunctionComponent<PokemonListProps> = ({ pokemon, error
   )
 };
 
-// STYLING (alphabetized) ---------------------
-
+// STYLING ---------------------
 const StyledBox = styled.div`
     width: 100%;
     display: grid;
