@@ -66,6 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
        * Although I did start trying to debounce my request, I would have liked to get that working. 
        * look into why API requests never returned empty array of pokemon as documentation suggested. (Empty Results returned 404 error)
        * refactor handling of nextPage
+       * add tests
        * resolve eslint errors 
        * remove styled-components. Although, MaterialUI gives you the option between styled components and emotions upon installation, it still requires emotions as a dependency for certain components (like the text input). So I would solely choose emotions to remove unnecessary libraries. (performance consideration) 
 ## Takeaways 
