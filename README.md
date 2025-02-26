@@ -52,7 +52,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 * Created components file for easeful separation of concerns, reusability, etc.  
    * Pokenmon:
       * lazy loads PokemonList component since it does not need to be rendered immediately (performance consideration)
-      * this component is memoized to avoid unnecessary rerenders because it contains the bulk of my data-fetching logic  
+      * this component is memoized to avoid unnecessary rerenders because it contains the bulk of my data-fetching logic (performance consideration)
+      * handles initial data fetch with useSWR and has a useEffect to hand re-fetch when given a "nextPage" tolen. I did this because useSWR limits your ability to handle request responses/chain post-requests. I would consider refactoring this given more time. But I do like that useSWR also automatically handles re-trying failed requests that aren't 404s. 
+* Created api file for easy maintainability for API url. I also considered that I would need to reuse this if I got to the Pokemon detail page extension. 
+
+## Challenges: 
+* Time constraint. I time boxed 2 hours and spent a total of 2 hours and 40 minutes on this. My children and I currently have the flu so I had to step away often. I would have had more uninterrupted time otherwise. 
+   * With more time, I would: 
+       * make small changes with accessibilty in mind. Things I've already considered, HTML tag nesting and MaterialUI automatically adds aria labels. 
+       * look into why initial page load is sometimes laggy. 
+       * look into why pokemon objectd received from API didn't include a "classification" like docs suggest. I added a latin placeholder to account for this. 
+       * have added a toggle button to dynamically turn on chaos mode 
+       * Although I did start trying to debounce my request, I would have liked to get that working. 
+       * look into why API requests never returned empty array of pokemon as documentation suggested. (Empty Results returned 404 error)
+       * refactor handling of nextPage
+## Takeaways 
+   * The last time I created a project in NextJS was in 2022-- it never ceases to astound me how rapidly the landscape of tech evolves! It felt brand new and I was honestly super excited to learn about and use its new features. I have no doubt thag I'll feel the same abojt Svelte :) 
+Thank you so much for your consideration! 
+
    
 
 To learn more about Next.js, take a look at the following resources:
