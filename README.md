@@ -67,7 +67,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
        * look into why API requests never returned empty array of pokemon as documentation suggested. (Empty Results returned 404 error)
        * refactor handling of nextPage
 ## Takeaways 
-   * The last time I created a project in NextJS was in 2022-- it never ceases to astound me how rapidly the landscape of tech evolves! It felt brand new and I was honestly super excited to learn about and use its new features. I have no doubt thag I'll feel the same abojt Svelte :) 
+   * The last time I created a project in NextJS was in 2022-- it never ceases to astound me how rapidly the landscape of tech evolves! It felt brand new and I was honestly super excited to learn about and use its new features. I have no doubt that I'll feel the same about Svelte :) 
 Thank you so much for your consideration! 
 
    
