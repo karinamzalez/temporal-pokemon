@@ -50,11 +50,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 * I created a custom hook for my search input to cleanly bind value to imput
 * I created a shared types file
 * Created components file for easeful separation of concerns, reusability, etc.  
-   * Pokenmon:
+   * Pokemon:
       * lazy loads PokemonList component since it does not need to be rendered immediately (performance consideration)
       * this component is memoized to avoid unnecessary rerenders because it contains the bulk of my data-fetching logic (performance consideration)
       * handles initial data fetch with useSWR and has a useEffect to hand re-fetch when given a "nextPage" tolen. I did this because useSWR limits your ability to handle request responses/chain post-requests. I would consider refactoring this given more time. But I do like that useSWR also automatically handles re-trying failed requests that aren't 404s. 
-* Created api file for easy maintainability for API url. I also considered that I would need to reuse this if I got to the Pokemon detail page extension. 
+* Created api file for easy maintainability of API url. I also considered that I would need to reuse this if I got to the Pokemon detail page extension. 
 
 ## TODO: 
 * Time constraint was a challenge. I time boxed 2 hours and spent a total of 2 hours and 40 minutes on this. My children and I currently have the flu so I had to step away often. I would have had more uninterrupted time otherwise. 
@@ -62,13 +62,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
        * make small changes with accessibilty in mind. Things I've already considered, HTML tag nesting and MaterialUI automatically adds aria labels. 
        * look into why initial page load is sometimes laggy. 
        * look into why pokemon objectd received from API didn't include a "classification" like docs suggest. I added a latin placeholder to account for this. 
-       * have added a toggle button to dynamically turn on chaos mode 
+       * add a toggle button to dynamically turn on chaos mode 
        * Although I did start trying to debounce my request, I would have liked to get that working. 
        * look into why API requests never returned empty array of pokemon as documentation suggested. (Empty Results returned 404 error)
        * refactor handling of nextPage
        * add tests
-       * resolve eslint errors
-       * add better error handling for nextPage request 
+       * resolve eslint errors 
        * debug why lazy loading wasn't working as intended
        * be more thorough with my types
        * remove styled-components. Although, MaterialUI gives you the option between styled components and emotions upon installation, it still requires emotions as a dependency for certain components (like the text input). So I would solely choose emotions to remove unnecessary libraries. (performance consideration) 
