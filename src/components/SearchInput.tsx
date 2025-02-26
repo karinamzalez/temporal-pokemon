@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 type SearchInputProps = {
   bindSearchTerm: {
     value: string;
-    onChange: (e: unknown) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   }
 }
 

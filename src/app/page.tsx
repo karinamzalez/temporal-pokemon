@@ -4,10 +4,10 @@ import Pokemon from '@/components/Pokemon';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Header>Pokemon Search</Header>
       <Pokemon />
-    </main>
+    </>
   );
 }
 

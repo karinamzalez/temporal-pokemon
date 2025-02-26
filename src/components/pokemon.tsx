@@ -1,7 +1,8 @@
 // IMPORTS -----------------------------------
-import React, { JSX, useEffect } from 'react';
+import React, { JSX } from 'react';
 import styled from 'styled-components';
 // import { PokemonType } from '@/types';
+import Alert from '@mui/material/Alert';
 import PokemonList from '@/components/PokemonList';
 import SearchInput from '@/components/SearchInput';
 import { useInput } from '@/hooks/useInput';
@@ -13,7 +14,7 @@ import { fetcher } from '@/api';
 // COMPONENT ---------------------------------
 const Pokemon: React.FunctionComponent = (): JSX.Element => {
   const { value: searchTerm, bind: bindSearchTerm } = useInput("");
-  const { data, error, isLoading } = useSWR(`api/pokemon/search/${searchTerm}`, fetcher, {
+  const { data, error, isLoading } = useSWR(!!searchTerm ? `api/pokemon/search/${searchTerm}` : null, fetcher, {
     keepPreviousData: true,
     revalidateOnFocus: false,
     revalidateOnMount: false,
@@ -22,7 +23,7 @@ const Pokemon: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <StyledContainer> 
-      <h1>Welcome to Pokemon Search! Search by keyword below:</h1>
+      <h1>Welcome to Pokemon Search!</h1>
       <SearchInput bindSearchTerm={bindSearchTerm} />
       {
         data ? 
@@ -31,7 +32,7 @@ const Pokemon: React.FunctionComponent = (): JSX.Element => {
           loading={isLoading}
           pokemon={data.pokemon}
         /> : 
-        <h3>Unrequested</h3>
+        <Alert severity="warning">Unrequested</Alert>
       }
     </StyledContainer>
   )
@@ -39,7 +40,7 @@ const Pokemon: React.FunctionComponent = (): JSX.Element => {
 
 // STYLING (alphabetized) ---------------------
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.main`
   justify-content: center;
   margin: 5vh 5vw;
 
