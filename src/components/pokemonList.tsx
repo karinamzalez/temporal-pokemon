@@ -2,14 +2,19 @@
 import React, { JSX } from 'react';
 import styled from 'styled-components';
 import { PokemonType } from '@/types';
+import CircularProgress from "@mui/material/CircularProgress";
 
 // TYPES -------------------------------------
 interface PokemonListProps {
-  pokemon: PokemonType[]
+  pokemon: PokemonType[],
+  error: {"error": string},
+  loading: boolean
 }
 
 // COMPONENT ---------------------------------
-const PokemonList: React.FunctionComponent<PokemonListProps> = ({ pokemon }): JSX.Element => {
+const PokemonList: React.FunctionComponent<PokemonListProps> = ({ pokemon, error, loading }): JSX.Element => {
+  if (error) return <h3>Failed to load</h3>
+  if (loading) return <CircularProgress />
   return (
     <Grid>
       {pokemon.map((pokemon, id) => (

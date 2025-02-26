@@ -1,7 +1,7 @@
 // IMPORTS -----------------------------------
-import React, { JSX, useEffect, useState } from 'react';
+import React, { JSX, useEffect } from 'react';
 import styled from 'styled-components';
-import { PokemonType } from '@/types';
+// import { PokemonType } from '@/types';
 import PokemonList from '@/components/PokemonList';
 import SearchInput from '@/components/SearchInput';
 import { useInput } from '@/hooks/useInput';
@@ -12,28 +12,26 @@ import { fetcher } from '@/api';
 
 // COMPONENT ---------------------------------
 const Pokemon: React.FunctionComponent = (): JSX.Element => {
-  // const [pokemon, setPokemon] = useState<PokemonType[]>([{name: "pikachu"}, {name: "squirtle"}]);
   const { value: searchTerm, bind: bindSearchTerm } = useInput("");
   const { data, error, isLoading } = useSWR(`api/pokemon/search/${searchTerm}`, fetcher, {
-    keepPreviousData: true
+    keepPreviousData: true,
+    revalidateOnFocus: false,
+    revalidateOnMount: false,
+    revalidateOnReconnect: false
   });
-
-  useEffect(() => {
-    console.log("term", searchTerm)
-    console.log("data", data)
-    console.log("isLoading", isLoading)
-    console.log("error", error)
-  }, [data]);
 
   return (
     <StyledContainer> 
       <h1>Welcome to Pokemon Search! Search by keyword below:</h1>
       <SearchInput bindSearchTerm={bindSearchTerm} />
       {
-        data && data.pokemon ? 
+        data ? 
         <PokemonList
+          error={error}
+          loading={isLoading}
           pokemon={data.pokemon}
-        /> : <div>hi</div>
+        /> : 
+        <h3>Unrequested</h3>
       }
     </StyledContainer>
   )

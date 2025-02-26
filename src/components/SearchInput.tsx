@@ -1,5 +1,5 @@
 // IMPORTS -----------------------------------
-import React, { JSX, useEffect } from 'react';
+import React, { JSX } from 'react';
 import TextField from "@mui/material/TextField";
 
 
